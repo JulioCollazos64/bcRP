@@ -1,0 +1,18 @@
+Package: bcR
+Title: Access Peru Central Bank Data API
+Version: 0.0.0.9000
+Authors@R: 
+    person("Julio", "Collazos", email = "amarullazo626@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0009-0006-5503-0997"))
+Description: Search and access more than ten thousand datasets provided by the Peruvian Central Bank Data API.
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports: 
+    httr2,
+    readr,
+    tibble,
+    yyjsonr
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
