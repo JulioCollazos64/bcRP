@@ -49,9 +49,8 @@ get_bcrp_data <- function(
     httr2::req_perform_parallel(list_of_requests)
   }
   tbl <- lapply(list_of_responses, function(s) {
-    f_response <- s |>
-      httr2::resp_body_raw() |>
-      yyjsonr::read_json_raw()
+    f_response <- httr2::resp_body_raw(s)
+    f_response <- yyjsonr::read_json_raw(f_response)
     code <- regmatches(
       x = s$url,
       m = regexpr(
