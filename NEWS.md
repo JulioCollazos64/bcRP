@@ -1,3 +1,3 @@
-# bcRP (development version)
+# bcRP 1.0.0
 
 - Initial CRAN submission.
