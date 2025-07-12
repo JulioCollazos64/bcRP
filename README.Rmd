@@ -1,0 +1,54 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# bcR
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+Grab the latest data from the Peruvian Central Bank using R.
+
+## Installation
+
+You can install the development version of bcR from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("pak")
+pak::pak("JulioCollazos64/bcR")
+```
+
+## Example
+
+Search data about inflation:
+
+```{r example-1.1}
+library(bcR)
+metadata_tbl <- get_bcrp_metadata()
+metadata_tbl
+subset(metadata_tbl, grepl("Inflación", `Nombre de serie`))
+```
+
+Let's look at some statistics:
+
+```{r example-1.2}
+inflation_data <- get_bcrp_data(
+  codes = "PN01296PM",
+  from = "2010-01",
+  to = "2025-01"
+)
+inflation_data$values <- as.numeric(inflation_data$values)
+inflation_data
+summary(inflation_data)
+```
