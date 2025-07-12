@@ -1,5 +1,5 @@
 #' Perform an API request to BCRPData
-#' @param codes A character vector with valid BCRPData series codes, see the get_bcrp_metadata() function. Required.
+#' @param codes A character vector with valid BCRPData series codes, see the [get_bcrp_metadata()] function. Required.
 #' @param from A character vector of length 1, usually a year see Details. Optional.
 #' @param to A character vector of length 1. Must be greater than the
 #' `from` argument. Optional.
