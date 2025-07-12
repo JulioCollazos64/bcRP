@@ -1,3 +1,3 @@
-# bcR (development version)
+# bcRP (development version)
 
-* Initial CRAN submission.
+- Initial CRAN submission.

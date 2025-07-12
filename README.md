@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# bcR
+# bcRP
 
 <!-- badges: start -->
 
@@ -11,12 +11,12 @@ Grab the latest data from the Peruvian Central Bank using R.
 
 ## Installation
 
-You can install the development version of bcR from
+You can install the development version of bcRP from
 [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("pak")
-pak::pak("JulioCollazos64/bcR")
+pak::pak("JulioCollazos64/bcRP")
 ```
 
 ## Example
@@ -24,7 +24,7 @@ pak::pak("JulioCollazos64/bcR")
 Search data about inflation:
 
 ``` r
-library(bcR)
+library(bcRP)
 metadata_tbl <- get_bcrp_metadata()
 metadata_tbl
 #> # A tibble: 16,023 × 19
