@@ -17,14 +17,14 @@ perform_req_strategy <- function(requests, strategy) {
     })]
     urls <- sapply(requests[errs], function(s) s$url)
     errs <- paste(get_underlying_code(urls), collapse = " ")
-    message("Errors at: ", errs)
+    stop("Error(s) at: ", errs)
   } else {
     res
   }
 }
 
 
-#' Get Underlying code
+#' Get Underlying API code
 #'
 #' @noRd
 #' @keywords internal

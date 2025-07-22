@@ -15,6 +15,7 @@
 #' \item{Monthly: Provide a year followed by a hyphen followed by the month in its numerical value, e.g 2018-5}
 #' \item{Daily: Provide a year followed by a hyphen followed by the month and followed by the day, e.g 2018-5-5}
 #' }
+#' This function will try to get all the valid codes you provided in its `codes` argument, if one of the requests fails it will stop its execution for all the codes and return an error, pointing out which codes caused this.
 #'
 #' @export
 #' @examples
@@ -53,22 +54,16 @@ get_bcrp_data <- function(
     paste0(base_uri, codes, "/json", range),
     httr2::request
   )
-  list_of_responses <- if (request_strategy == "sequential") {
-    httr2::req_perform_sequential(list_of_requests)
-  } else {
-    httr2::req_perform_parallel(list_of_requests)
-  }
+
+  list_of_responses <- perform_req_strategy(
+    requests = list_of_requests,
+    strategy = request_strategy
+  )
+
   tbl <- lapply(list_of_responses, function(s) {
     f_response <- httr2::resp_body_raw(s)
     f_response <- yyjsonr::read_json_raw(f_response)
-    code <- regmatches(
-      x = s$url,
-      m = regexpr(
-        "(?<=api\\/)[A-Z0-9]{1,}(?=\\/json)",
-        s$url,
-        perl = TRUE
-      )
-    )
+    code <- get_underlying_code(request_string = s$url)
     series_name <- f_response$config$series$name
     df <- f_response$periods
     df$values <- unlist(df$values)

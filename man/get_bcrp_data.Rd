@@ -38,6 +38,7 @@ BCRPData has data of different frequencies, it's important to consider that when
 \item{Monthly: Provide a year followed by a hyphen followed by the month in its numerical value, e.g 2018-5}
 \item{Daily: Provide a year followed by a hyphen followed by the month and followed by the day, e.g 2018-5-5}
 }
+This function will try to get all the valid codes you provided in its \code{codes} argument, if one of the requests fails it will stop its execution for all the codes and return an error, pointing out which codes caused this.
 }
 \examples{
 codes <- c("PN00009MM", "PN00002MM", "PN01270PM", "PD39557DA")
@@ -49,8 +50,10 @@ get_bcrp_data(codes = codes)
 # through the `from` and `to` arguments.
 get_bcrp_data(codes = codes, from = "2015-01", to = "2020-01")
 
-# If needed, you can sometimes speed-up your data API calls
-# by performing them in parallel
+# If needed, you can sometimes speed up your data API calls
+# by performing them in parallel. In this example we are
+# querying just 5 codes so the benefits of parallelism does not
+# outweigh its cost, making the request slower.
 \dontrun{
 get_bcrp_data(codes = codes, request_strategy = "parallel")
 }
