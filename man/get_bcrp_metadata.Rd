@@ -13,11 +13,9 @@ A data frame with one row per code available for request.
 Access metadata for all available datasets provided by the Peruvian Central Bank
 }
 \examples{
-\dontrun{
-
+# No arguments required, simply call the function.
 get_bcrp_metadata()
 
-}
 }
 \author{
 Julio Collazos

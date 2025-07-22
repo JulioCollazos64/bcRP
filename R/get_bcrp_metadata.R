@@ -1,11 +1,9 @@
 #' Access metadata for all available datasets provided by the Peruvian Central Bank
 #' @export
 #' @examples
-#' \dontrun{
-#'
+#' # No arguments required, simply call the function.
 #' get_bcrp_metadata()
 #'
-#' }
 #' @return A data frame with one row per code available for request.
 #' @author Julio Collazos
 get_bcrp_metadata <- function() {

@@ -18,12 +18,18 @@
 #'
 #' @export
 #' @examples
-#' \dontrun{
-#'
+#' codes <- c("PN00009MM", "PN00002MM", "PN01270PM", "PD39557DA")
 #' # Will get you the most recent data for these codes
-#' get_bcrp_data(codes = c("PN00009MM", "PN00002MM", "PN00005MM"))
+#' # as you have not provided the `from` and `to` arguments.
+#' get_bcrp_data(codes = codes)
 #'
-#' }
+#' # You can also provide the range of dates
+#' # through the `from` and `to` arguments.
+#' get_bcrp_data(codes = codes, from = "2015-01", to = "2020-01")
+#'
+#' # If needed, you can sometimes speed-up your data API calls
+#' # by performing them in parallel
+#' get_bcrp_data(codes = codes, request_strategy = "parallel")
 #' @return Data frame with code-level observations.
 #' @author Julio Collazos.
 get_bcrp_data <- function(
