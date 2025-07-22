@@ -51,7 +51,9 @@ get_bcrp_data(codes = codes, from = "2015-01", to = "2020-01")
 
 # If needed, you can sometimes speed-up your data API calls
 # by performing them in parallel
+\dontrun{
 get_bcrp_data(codes = codes, request_strategy = "parallel")
+}
 }
 \author{
 Julio Collazos.
