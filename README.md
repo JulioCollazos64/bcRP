@@ -11,7 +11,13 @@ Grab the latest data from the Peruvian Central Bank using R.
 
 ## Installation
 
-You can install the development version of bcRP from
+You can install the stable version of `bcRP` from CRAN with:
+
+``` r
+install.packages("bcRP")
+```
+
+You can install the development version of `bcRP` from
 [GitHub](https://github.com/) with:
 
 ``` r
