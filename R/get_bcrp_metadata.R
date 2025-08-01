@@ -25,10 +25,11 @@ get_bcrp_metadata <- function() {
       )
     },
     error = function(cnd) {
-      cat(
-        "Server response:",
+      stop(
+        "Server response: ",
         conditionMessage(cnd),
-        "\nConsider visiting the following url: https://estadisticas.bcrp.gob.pe/estadisticas/series/ayuda/metadatos to check whether the page is currently down."
+        "\nConsider visiting the following url: https://estadisticas.bcrp.gob.pe/estadisticas/series/ayuda/metadatos to check whether the page is currently down.",
+        call. = FALSE
       )
     },
     finally = unlink(temp)
