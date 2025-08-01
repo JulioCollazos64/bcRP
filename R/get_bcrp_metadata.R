@@ -8,19 +8,29 @@
 #' @author Julio Collazos
 get_bcrp_metadata <- function() {
   url <- "https://estadisticas.bcrp.gob.pe/estadisticas/series/metadata"
-  temp <- tempfile(fileext = ".csv")
-  on.exit(unlink(temp), add = TRUE)
-  httr2::req_perform(
-    httr2::request(url),
-    path = temp
-  )
-
-  suppressMessages(
-    readr::read_delim(
-      temp,
-      locale = readr::locale(encoding = "latin1"),
-      delim = ";",
-      show_col_types = FALSE
-    )
+  tryCatch(
+    expr = {
+      temp <- tempfile(fileext = ".csv")
+      httr2::req_perform(
+        httr2::request(url),
+        path = temp
+      )
+      suppressMessages(
+        readr::read_delim(
+          temp,
+          locale = readr::locale(encoding = "latin1"),
+          delim = ";",
+          show_col_types = FALSE
+        )
+      )
+    },
+    error = function(cnd) {
+      cat(
+        "Server response:",
+        conditionMessage(cnd),
+        "\nConsider visiting the following url: https://estadisticas.bcrp.gob.pe/estadisticas/series/ayuda/metadatos to check whether the page is currently down."
+      )
+    },
+    finally = unlink(temp)
   )
 }
