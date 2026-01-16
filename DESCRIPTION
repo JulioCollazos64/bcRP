@@ -1,6 +1,6 @@
 Package: bcRP
 Title: Access 'BCRPDATA' API
-Version: 1.0.1
+Version: 1.0.2
 Authors@R: 
     person("Julio", "Collazos", email = "amarullazo626@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0009-0006-5503-0997"))
 Description: Search and access more than ten thousand datasets included in 'BCRPDATA' (see <https://estadisticas.bcrp.gob.pe/estadisticas/series/ayuda/bcrpdata> for more information).
