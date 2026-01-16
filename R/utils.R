@@ -17,7 +17,12 @@ perform_req_strategy <- function(requests, strategy) {
     })]
     urls <- sapply(requests[errs], function(s) s$url)
     errs <- paste(get_underlying_code(urls), collapse = " ")
-    stop("Error(s) at: ", errs)
+    stop(
+      "Error(s) at: ",
+      errs,
+      "\n",
+      "Hint: Make sure you got the correct codes."
+    )
   } else {
     res
   }

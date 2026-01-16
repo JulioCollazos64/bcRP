@@ -55,10 +55,21 @@ get_bcrp_data <- function(
     httr2::request
   )
 
-  list_of_responses <- perform_req_strategy(
-    requests = list_of_requests,
-    strategy = request_strategy
-  )
+  list_of_responses <-
+    tryCatch(
+      perform_req_strategy(
+        requests = list_of_requests,
+        strategy = request_strategy
+      ),
+      error = function(e) {
+        conditionMessage(e)
+      }
+    )
+
+  if (!is.list(list_of_responses)) {
+    message(list_of_responses)
+    return(invisible(NULL))
+  }
 
   tbl <- lapply(list_of_responses, function(s) {
     f_response <- httr2::resp_body_raw(s)
